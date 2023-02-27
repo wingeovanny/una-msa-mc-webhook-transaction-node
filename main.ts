@@ -7,13 +7,13 @@ import { Logger } from '@deuna/node-logger-lib';
 import { ValidationPipe } from '@nestjs/common/pipes/validation.pipe';
 
 import { KAFKA_CLIENT_CONFIG } from './src/config/kafka';
-import { WebHookClientServiceModule } from './src/webhook-client-service.module';
 import { SERVICE_NAME } from './src/constants/common';
+import { NotificationClientServiceModule } from './src/notification-client-service.module';
 
 const logger = new Logger({ context: 'WebHook-client Service' });
 
 async function bootstrap() {
-  const app = await NestFactory.create(WebHookClientServiceModule);
+  const app = await NestFactory.create(NotificationClientServiceModule);
   if (process.env.ENABLE_AUDIT === 'true') {
     app.useGlobalInterceptors(new AuditInterceptor(SERVICE_NAME));
   }
