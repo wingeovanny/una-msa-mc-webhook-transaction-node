@@ -8,12 +8,12 @@ import { ValidationPipe } from '@nestjs/common/pipes/validation.pipe';
 
 import { KAFKA_CLIENT_CONFIG } from './src/config/kafka';
 import { SERVICE_NAME } from './src/constants/common';
-import { NotificationClientServiceModule } from './src/notification-client-service.module';
+import { NotificationServiceModule } from './src/notification-service.module';
 
-const logger = new Logger({ context: 'WebHook-client Service' });
+const logger = new Logger({ context: 'Notification Client Service' });
 
 async function bootstrap() {
-  const app = await NestFactory.create(NotificationClientServiceModule);
+  const app = await NestFactory.create(NotificationServiceModule);
   if (process.env.ENABLE_AUDIT === 'true') {
     app.useGlobalInterceptors(new AuditInterceptor(SERVICE_NAME));
   }

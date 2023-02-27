@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { ClientsModule } from '@nestjs/microservices';
 import { KAFKA_CLIENT_CONFIG } from '../../config/kafka';
 import { TransactionController } from './transaction.controller';
+import { TransactionService } from './transaction.service';
 
 @Module({
   imports: [
@@ -15,6 +16,6 @@ import { TransactionController } from './transaction.controller';
     ]),
   ],
   controllers: [TransactionController],
-  providers: [],
+  providers: [TransactionService],
 })
-export class NotificationClientTransactionModule {}
+export class TransactionModule {}
